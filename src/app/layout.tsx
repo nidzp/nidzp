@@ -2,7 +2,6 @@ import "./globals.css";
 import { Inter, Poppins, Bebas_Neue } from "next/font/google";
 import { ReactNode } from "react";
 
-// Inicijalizacija Google fontova sa CSS varijablama za Tailwind
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const poppins = Poppins({
   subsets: ["latin"],
@@ -16,20 +15,15 @@ const bebas = Bebas_Neue({
 });
 
 export const metadata = {
-  title: "NIDZP.VFX | Brutalni VFX, Edit & AI Video Portfolio",
-  description: "Viralni VFX i AI video editing, Goated Edits. TikTok, Instagram, YouTube, brendovi i influenseri.",
+  title: "NIDZP | VFX & AI Video Portfolio",
+  description: "Specijalizovan za napredan video editing, VFX i AI produkciju za digitalne brendove, sport i društvene mreže. Profesionalno. Efikasno. Dokazano.",
   openGraph: {
-    title: "NIDZP.VFX | Brutalni VFX Portfolio",
-    description: "Viralni VFX i AI video editing, Goated Edits. TikTok, Instagram, YouTube, brendovi i influenseri.",
-    url: "https://nidzp-aegs.vercel.app",
-    siteName: "NIDZP.VFX Portfolio",
+    title: "NIDZP | VFX & AI Video Portfolio",
+    description: "Advanced video editing, VFX & AI content for brands, sport and agencies. Premium results, fast turnaround.",
+    url: "https://nidzp.vercel.app",
+    siteName: "NIDZP Portfolio",
     images: [
-      {
-        url: "/pozadina.png",
-        width: 1200,
-        height: 630,
-        alt: "NIDZP.VFX Portfolio"
-      }
+      { url: "/pozadina.png", width: 1200, height: 630, alt: "NIDZP Portfolio" }
     ],
     locale: "en_US",
     type: "website"
@@ -45,10 +39,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <meta property="og:title" content={metadata.title} />
         <meta property="og:description" content={metadata.description} />
         <meta property="og:image" content="/pozadina.png" />
-        <meta property="og:url" content="https://nidzp-aegs.vercel.app" />
+        <meta property="og:url" content="https://nidzp.vercel.app" />
       </head>
       <body className="min-h-screen font-inter antialiased text-main">
-        {/* NAVIGATION (navigacija sajta) može se dodati ovde po potrebi */}
         {children}
       </body>
     </html>
