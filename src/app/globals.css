@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Globalni stil za body - tamna pozadina sa gradientom i slikom */
+body {
+  @apply bg-gradient-to-br from-[#091326] via-[#15294c] to-[#060e1c] text-white;
+  background-image: url('/pozadina.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Stilizacija scrollbar-a za bolji izgled na tamnoj pozadini */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #202d45;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Globalni stil za linkove - transition na hover */
+a {
+  @apply transition-colors duration-200 hover:text-cyan-400;
+}
+
+/* Reusable klasa za glavna akciona dugmad */
+.button-main {
+  @apply bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-2 px-5 rounded-xl shadow-lg text-base md:text-lg transition;
+}
+
+/* Pomoćna klasa za sekcije (širina, margine) */
+.section {
+  @apply w-full max-w-3xl mx-auto mb-10 px-3;
+}
+
+/* Responsivnost za manje ekrane (prilagođavanje pozadine) */
+@media (max-width: 768px) {
+  body {
+    background-size: auto 120vh;
+    background-position: top;
+  }
+  .section {
+    @apply px-2;
+  }
+}
