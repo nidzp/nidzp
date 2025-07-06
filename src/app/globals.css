@@ -2,19 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ========== BODY I POZADINA ========== */
+/* Definicija boja za light (root) i dark (kada je .dark klasa prisutna) temu */
+:root {
+  --color-bg: 245, 245, 245;      /* svetla pozadina (#f5f5f5) */
+  --color-primary: 0, 224, 255;   /* primarna akcent boja (#00e0ff) */
+  --color-accent: 56, 212, 247;   /* sekundarna akcent boja (#38d4f7) */
+  --color-main: 14, 17, 23;       /* osnovna boja teksta (#0e1117 - gotovo crna) */
+  --color-desc: 30, 42, 58;       /* boja opisa/sekundarnog teksta (#1e2a3a) */
+}
+.dark {
+  --color-bg: 11, 18, 32;         /* tamna pozadina (#0b1220) */
+  --color-primary: 0, 224, 255;   /* primarna boja ostaje ista u dark modu */
+  --color-accent: 56, 212, 247;   /* akcent boja ostaje ista u dark modu */
+  --color-main: 229, 246, 255;    /* boja osnovnog teksta u dark modu (#e5f6ff) */
+  --color-desc: 125, 223, 249;    /* boja opisa u dark modu (#7ddff9) */
+}
+
+/* Stilovi za body za light i dark temu */
 body {
-  @apply bg-gradient-to-br from-[#091326] via-[#15294c] to-[#060e1c] text-white;
+  background-color: rgb(var(--color-bg));
+  scroll-behavior: smooth;
+  line-height: 1.6;
+}
+.dark body {
+  @apply bg-gradient-to-br from-[#091326] via-[#15294c] to-[#060e1c];
   background-image: url('/pozadina.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  font-family: 'Inter', sans-serif;
-  scroll-behavior: smooth;
-  line-height: 1.6;
 }
 
-/* ========== SCROLLBAR ========== */
+/* Stilovi scrollbar-a (desktop) */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -26,7 +44,7 @@ body {
   background: transparent;
 }
 
-/* ========== LINKOVI ========== */
+/* Linkovi - tranzicija boje pri hover */
 a {
   @apply text-cyan-400 transition-colors duration-200;
 }
@@ -34,17 +52,29 @@ a:hover {
   @apply text-cyan-300 underline underline-offset-2;
 }
 
-/* ========== GLAVNI BUTTON ========== */
+/* Glavno stilizovano dugme (reusable component) */
 .button-main {
   @apply bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-2 px-5 rounded-xl shadow-lg text-base md:text-lg transition;
 }
+/* Dark mode varijacija glavnog dugmeta (tamnija pozadina u dark modu) */
+.dark .button-main {
+  @apply bg-blue-800 hover:bg-blue-700;
+}
 
-/* ========== SEKCIONI KONTEJNERI ========== */
+/* Omogućavanje prelaska .button-main u transparentnu pozadinu (npr. jezički toggle) */
+.button-main.bg-black\/30 {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.button-main.hover\:bg-cyan-800:hover {
+  background-color: #155e75; /* Tailwind cyan-800 */
+}
+
+/* Sekcioni kontejner za sadržaj (centriranje i razmaci) */
 .section {
   @apply w-full max-w-4xl mx-auto mb-12 px-4;
 }
 
-/* ========== ANIMACIJE ========== */
+/* Animacije za pojavljivanje sadržaja */
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -55,63 +85,35 @@ a:hover {
     transform: translateY(0);
   }
 }
-
 .animate-fade-in {
   animation: fade-in 0.6s ease-out forwards;
 }
 
-/* ========== HERO TEKST ANIMACIJA ========== */
+/* Kucajući tekst efekat (trenutno opciono/neiskorišćeno) */
 .typing-text {
   overflow: hidden;
   white-space: nowrap;
   border-right: 2px solid #00e0ff;
   animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
 }
-
 @keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
+  from { width: 0; }
+  to { width: 100%; }
 }
-
 @keyframes blink-caret {
-  0%, 100% { border-color: transparent }
-  50% { border-color: #00e0ff }
+  0%, 100% { border-color: transparent; }
+  50% { border-color: #00e0ff; }
 }
 
-/* ========== MOBILNA RESPONSIVNOST ========== */
-@media (max-width: 768px) {
-  body {
-    background-size: auto 120vh;
-    background-position: top;
-  }
-  .section {
-    @apply px-2;
-  }
-}
-
-/* ========== BOJE VARIJABLE (OPCIONO) ========== */
-:root {
-  --color-primary: #00e0ff;
-  --color-dark: #0e1117;
-  --color-light: #f5f5f5;
-  --color-border: #1e2a3a;
-}
-
-/* ========== TEKST KOMPONENTE ========== */
+/* Tekstualni efekti */
 .text-shadow {
   text-shadow: 0 2px 10px rgba(0, 224, 255, 0.3);
 }
-
 .glow {
   text-shadow: 0 0 10px #00e0ff, 0 0 20px #00e0ff;
 }
 
-/* ========== UTILITY KLASE ZA SEKCIONE BLOKOVE ========== */
+/* Kartica/blok sa pozadinom i blur efektom (koristi se za sekcije) */
 .card {
   @apply p-6 rounded-2xl shadow-xl bg-white/5 border border-white/10 backdrop-blur;
-}
-
-/* ========== DARK MODE PRIMERI ========== */
-.dark .button-main {
-  @apply bg-blue-800 hover:bg-blue-700;
 }

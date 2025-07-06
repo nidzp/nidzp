@@ -1,8 +1,19 @@
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Inter, Poppins, Bebas_Neue } from "next/font/google";
 import { ReactNode } from "react";
 
+// Inicijalizacija Google fontova sa CSS varijablama za Tailwind
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-poppins"
+});
+const bebas = Bebas_Neue({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-bebas"
+});
 
 export const metadata = {
   title: "NIDZP.VFX | Brutalni VFX, Edit & AI Video Portfolio",
@@ -17,17 +28,17 @@ export const metadata = {
         url: "/pozadina.png",
         width: 1200,
         height: 630,
-        alt: "NIDZP.VFX Portfolio",
-      },
+        alt: "NIDZP.VFX Portfolio"
+      }
     ],
     locale: "en_US",
-    type: "website",
-  },
+    type: "website"
+  }
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={`${inter.variable} ${poppins.variable} ${bebas.variable} dark`}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -36,11 +47,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <meta property="og:image" content="/pozadina.png" />
         <meta property="og:url" content="https://nidzp-aegs.vercel.app" />
       </head>
-      <body className="bg-hero-gradient min-h-screen font-inter text-white antialiased">
-        <div className="w-full min-h-screen bg-custom-dark bg-cover bg-no-repeat bg-fixed">
-          {/* NAVIGATION could go here */}
-          {children}
-        </div>
+      <body className="min-h-screen font-inter antialiased text-main">
+        {/* NAVIGATION (navigacija sajta) može se dodati ovde po potrebi */}
+        {children}
       </body>
     </html>
   );
