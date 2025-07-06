@@ -1,153 +1,111 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 
-const TEXT = {
+const text = {
   en: {
-    headline: "NDZP.VFX — Brutal World-Class VFX & Video Editing",
-    desc: "Elite post-production. Fastest viral edits. 200+ clients. 5M+ views. Your content — leveled up.",
-    services: "Services",
-    showcase: "Showcase",
-    contact: "Contact",
-    portfolio: "Portfolio",
-    switchLang: "Српски",
-    contactBtn: "Get in touch",
-    links: [
-      { name: "TikTok", url: "https://www.tiktok.com/@nidzp.vfx" },
-      { name: "Goated Edits", url: "https://www.tiktok.com/@goated.edits" },
-      { name: "Instagram", url: "https://www.instagram.com/nidzp.vfx/" },
-      { name: "YouTube", url: "https://www.youtube.com/@nidzp" },
-      { name: "Linktree", url: "https://linktr.ee/nidzp" }
+    headline: "NDZP.VFX — BRUTAL VISUAL FX & VIRAL EDITS",
+    sub: "Elite VFX • AI Video • Goated Edits",
+    desc: "Viral AI edits. Over 5M+ views, 200+ clients. Delivery: 24h. TikTok/YouTube/Instagram/Brand/Influencer edits. Modern workflow, world-class speed & visuals.",
+    services: "Services & Results",
+    details: [
+      "⚡ Viral VFX/AI TikTok, Reels, Shorts edits",
+      "📦 Goated meme & branded edits",
+      "📬 Fast delivery & top communication",
+      "🌐 Worldwide, bilingual (EN/SR)",
     ],
-    servicesList: [
-      "Ultra-fast VFX & AI Editing (TikTok, Shorts, Reels)",
-      "Brand promo & commercials",
-      "Overlay packs & green screen FX",
-      "Full-cycle post-production (AI, captions, meme FX, delivery in 24h)",
-    ],
-    showcaseNote: "See my viral edits, showreels & client work below.",
-    footer: "NDZP.VFX © " + new Date().getFullYear() + " — Elite standards only.",
+    results: "2024: 5M+ views — TikTok, YouTube, Instagram, TV",
+    clients: "Clients: Balkans, EU, USA",
+    avg: "Avg. delivery: 24h, global reach",
+    contact: "Contact me",
+    email: "Email: nikola.djokic10@gmail.com",
+    dm: "DM on Instagram: @nidzp.vfx",
+    srpski: "Српски"
   },
   sr: {
-    headline: "NDZP.VFX — Brutalni Svetski VFX & Video Editing",
-    desc: "Elitna postprodukcija. Najbrži viral editovi. 200+ klijenata. 5M+ pregleda. Tvoj sadržaj — na višem nivou.",
-    services: "Usluge",
-    showcase: "Portfolio",
-    contact: "Kontakt",
-    portfolio: "Radovi",
-    switchLang: "English",
-    contactBtn: "Kontaktiraj",
-    links: [
-      { name: "TikTok", url: "https://www.tiktok.com/@nidzp.vfx" },
-      { name: "Goated Edits", url: "https://www.tiktok.com/@goated.edits" },
-      { name: "Instagram", url: "https://www.instagram.com/nidzp.vfx/" },
-      { name: "YouTube", url: "https://www.youtube.com/@nidzp" },
-      { name: "Linktree", url: "https://linktr.ee/nidzp" }
+    headline: "NDZP.VFX — BRUTALNI VIZUELNI EFEKTI & VIRALNI EDITOVI",
+    sub: "Elitni VFX • AI Video • Goated Edits",
+    desc: "Viralni AI editovi. 5M+ pregleda, 200+ klijenata. Isporuka: 24h. TikTok/YouTube/Instagram/Brend/Influencer editovanje. Moderan workflow, svetska brzina i vizuali.",
+    services: "Usluge & Rezultati",
+    details: [
+      "⚡ Viralni VFX/AI TikTok, Reels, Shorts editovi",
+      "📦 Goated meme i brendirani editovi",
+      "📬 Brza isporuka & top komunikacija",
+      "🌐 Globalno, EN/SR jezici",
     ],
-    servicesList: [
-      "Ultra-brz VFX & AI editing (TikTok, Shorts, Reels)",
-      "Brendirani promo & reklame",
-      "Overlay paketi & green screen FX",
-      "Full-cycle postprodukcija (AI, captioni, meme efekti, isporuka 24h)",
-    ],
-    showcaseNote: "Pogledaj viralne editove, showreel i rad sa klijentima ispod.",
-    footer: "NDZP.VFX © " + new Date().getFullYear() + " — Samo brutalni standardi.",
-  },
+    results: "2024: 5M+ pregleda — TikTok, YouTube, Instagram, TV",
+    clients: "Klijenti: Balkan, EU, SAD",
+    avg: "Prosek isporuke: 24h, globalno",
+    contact: "Kontaktiraj me",
+    email: "Email: nikola.djokic10@gmail.com",
+    dm: "DM na Instagramu: @nidzp.vfx",
+    srpski: "English"
+  }
 };
+
+const links = [
+  { name: "TikTok main profile", url: "https://www.tiktok.com/@nidzp.vfx" },
+  { name: "Goated Edits TikTok", url: "https://www.tiktok.com/@goated.edits" },
+  { name: "Instagram", url: "https://www.instagram.com/nidzp.vfx/" },
+  { name: "YouTube", url: "https://www.youtube.com/@nidzp" }
+];
 
 export default function Home() {
   const [lang, setLang] = useState<"en" | "sr">("en");
-  const t = TEXT[lang];
 
   return (
-    <main className="relative min-h-screen flex flex-col items-center justify-start z-0">
-      {/* Overlay animacija pozadine */}
-      <div className="fixed inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-tr from-[#08182b] via-[#151d34ee] to-[#1e233a] opacity-95" />
-        <img
-          src="/pozadina.png"
-          alt="background"
-          className="absolute inset-0 w-full h-full object-cover object-center opacity-30 pointer-events-none select-none"
-          draggable={false}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#000b] via-transparent to-transparent" />
-      </div>
-
-      {/* Header + lang toggle */}
-      <header className="w-full max-w-6xl flex items-center justify-between px-4 md:px-10 py-4 mb-6">
-        <span className="text-3xl font-black tracking-tight bg-gradient-to-br from-cyan-400 to-blue-600 bg-clip-text text-transparent drop-shadow">NDZP.VFX</span>
+    <main className="min-h-screen w-full bg-bg text-main font-sans flex flex-col">
+      {/* Header */}
+      <header className="sticky top-0 z-20 w-full bg-bg/90 backdrop-blur border-b border-border flex items-center justify-between px-5 py-4">
+        <span className="text-3xl md:text-4xl font-extrabold tracking-tighter uppercase select-none">
+          NDZP.VFX
+        </span>
         <button
+          className="px-4 py-1 border border-accent rounded-lg text-accent font-bold hover:bg-bg2 transition"
           onClick={() => setLang(lang === "en" ? "sr" : "en")}
-          className="border px-4 py-1 rounded-xl font-bold bg-bg/70 hover:bg-bg2 transition text-accent border-accent"
-        >{t.switchLang}</button>
+        >
+          {text[lang].srpski}
+        </button>
       </header>
 
-      {/* HERO */}
-      <motion.section
-        className="flex flex-col items-center text-center max-w-3xl mb-8 px-4"
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.1 }}
-      >
-        <h1 className="text-4xl md:text-6xl font-black mb-3 tracking-tight bg-gradient-to-r from-cyan-300 via-blue-500 to-cyan-500 bg-clip-text text-transparent">{t.headline}</h1>
-        <p className="text-xl md:text-2xl text-accent2 mb-4">{t.desc}</p>
-        <div className="flex flex-wrap gap-4 mb-6 justify-center">
-          {t.links.map(link => (
+      {/* Hero */}
+      <section className="flex-1 w-full flex flex-col items-center justify-center text-center mt-14 mb-8 px-3">
+        <h1 className="text-5xl md:text-7xl font-extrabold mb-3 tracking-tight uppercase">{text[lang].headline}</h1>
+        <div className="text-2xl md:text-3xl text-accent mb-2 font-bold tracking-wide">{text[lang].sub}</div>
+        <p className="max-w-xl text-lg md:text-xl text-desc mb-8">{text[lang].desc}</p>
+        <div className="flex flex-wrap gap-4 justify-center mb-2">
+          {links.map(link => (
             <a
               key={link.name}
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-2 rounded-xl border-2 border-accent text-accent font-bold hover:bg-bg2 hover:text-accent2 transition shadow"
-            >{link.name}</a>
+              className="px-5 py-2 rounded-xl border-2 border-accent text-accent font-bold hover:bg-bg2 hover:text-accent2 transition shadow"
+            >
+              {link.name}
+            </a>
           ))}
         </div>
-        <a href="#contact" className="inline-block bg-gradient-to-r from-blue-600 to-cyan-400 text-white px-8 py-2 rounded-2xl font-bold shadow-lg hover:scale-105 transition">{t.contactBtn}</a>
-      </motion.section>
-
-      {/* SERVICES */}
-      <section className="w-full max-w-3xl mb-10 px-4">
-        <h2 className="text-2xl font-bold mb-3 text-accent">{t.services}</h2>
-        <ul className="space-y-2 text-base md:text-lg text-desc">
-          {t.servicesList.map((s, i) => <li key={i}>• {s}</li>)}
-        </ul>
       </section>
 
-      {/* SHOWCASE */}
-      <section className="w-full max-w-5xl mb-14 px-4" id="portfolio">
-        <h3 className="text-xl font-bold mb-5 text-center text-accent">{t.showcase}</h3>
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Video primeri */}
-          <div className="rounded-2xl shadow-2xl bg-bg2 overflow-hidden p-4 flex flex-col items-center">
-            <video
-              className="rounded-xl w-full mb-3"
-              controls
-              poster="/poster.jpg"
-            >
-              <source src="/video1.mp4" type="video/mp4" />
-              Showreel
-            </video>
-            <span className="text-lg font-bold text-accent">Showreel 2024</span>
-          </div>
-          <div className="rounded-2xl shadow-2xl bg-bg2 overflow-hidden p-4 flex flex-col items-center">
-            <video
-              className="rounded-xl w-full mb-3"
-              controls
-              poster="/poster.jpg"
-            >
-              <source src="/video2.mp4" type="video/mp4" />
-              Client Edit
-            </video>
-            <span className="text-lg font-bold text-accent">Brand Edit Example</span>
-          </div>
+      {/* Services */}
+      <section className="w-full max-w-3xl mx-auto mb-10 px-3">
+        <h2 className="text-2xl font-bold mb-3">{text[lang].services}</h2>
+        <div className="flex flex-wrap gap-3 mb-3">
+          {text[lang].details.map((d, i) => (
+            <span key={i} className="bg-bg2 px-3 py-2 rounded-lg text-base font-semibold text-accent2 shadow">{d}</span>
+          ))}
         </div>
-        <div className="text-xs text-accent2 mt-4 text-center">{t.showcaseNote}</div>
+        <div className="text-base md:text-lg text-desc mb-2">{text[lang].results}</div>
+        <div className="text-base md:text-lg text-desc mb-1">{text[lang].clients}</div>
+        <div className="text-base md:text-lg text-desc">{text[lang].avg}</div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="w-full py-6 text-center text-sm text-accent2 border-t border-border mt-auto bg-bg/50">
-        {t.footer}
+      {/* Contact */}
+      <footer className="w-full py-7 text-center text-lg text-accent2 border-t border-border mt-auto bg-bg/80">
+        <div className="mb-2 font-bold">{text[lang].contact}</div>
+        <div className="mb-1">{text[lang].email}</div>
+        <div>{text[lang].dm}</div>
       </footer>
     </main>
   );
