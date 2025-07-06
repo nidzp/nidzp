@@ -1,263 +1,144 @@
-"use client";
-
+'use client';
 import { useState } from "react";
-<<<<<<< HEAD
-import Link from "next/link";
 import { motion } from "framer-motion";
 
-const text = {
-  en: {
-    headline: "NIDZP.VFX — BRUTAL VISUAL FX & VIRAL EDITS",
-    sub: "Elite VFX • AI Video • Goated Edits",
-    desc: "Viral AI edits with world-class visuals. Over 5M+ views and 200+ clients. Delivery in 24h. TikTok, YouTube, Instagram, brand and influencer content with cutting-edge effects.",
-    services: "Services & Results",
-    details: [
-      "⚡ Viral VFX/AI TikTok, Reels & Shorts",
-      "📦 Top-tier meme & branded edits",
-      "📬 Fast delivery & responsive communication",
-      "🌐 Worldwide service (EN/SR bilingual)"
-    ],
-    results: "2024: 5M+ total views — TikTok, YouTube, Instagram, TV",
-    clients: "Clients served: Balkans, EU, USA",
-    avg: "Avg. delivery time: ~24h",
-    contact: "Contact me",
-    email: "Email: nikola.djokic10@gmail.com",
-    dm: "DM on Instagram: @nidzp.vfx",
-    toggleLabel: "Српски"  // label on button to switch to Serbian
-  },
-  sr: {
-    headline: "NIDZP.VFX — BRUTALNI VIZUELNI EFEKTI & VIRALNI EDITOVI",
-    sub: "Elitni VFX • AI Video • Goated Edits",
-    desc: "Viralni AI editovi sa svetskim vizuelima. Preko 5M+ pregleda i 200+ klijenata. Isporuka za 24h. TikTok, YouTube, Instagram, brend i influencer sadržaj sa vrhunskim efektima.",
-    services: "Usluge & Rezultati",
-    details: [
-      "⚡ Viralni VFX/AI TikTok, Reels i Shorts",
-      "📦 Vrhunski meme i brendirani editovi",
-      "📬 Brza isporuka i odlična komunikacija",
-      "🌐 Globalno (dvojezično EN/SR)"
-    ],
-    results: "2024: 5M+ ukupnih pregleda — TikTok, YouTube, Instagram, TV",
-    clients: "Klijenti: Balkan, EU, SAD",
-    avg: "Prosečno vreme isporuke: ~24h",
-    contact: "Kontaktiraj me",
-    email: "Email: nikola.djokic10@gmail.com",
-    dm: "Kontakt preko Instagrama (DM): @nidzp.vfx",
-    toggleLabel: "English"  // label on button to switch to English
-  }
+const textVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.07,
+      duration: 0.5
+    }
+  })
 };
 
-// Linkovi ka profilima na društvenim mrežama
-const links = [
-  { name: "TikTok (main)", url: "https://www.tiktok.com/@nidzp.vfx" },
-  { name: "TikTok (GoatedEdits)", url: "https://www.tiktok.com/@goated.edits" },
-=======
+const heroText = "NIDZP — ELITE FOOTBALL & VIRAL AI VFX EDITS";
+const heroSub = "Brutalni video editing za TikTok, Instagram i YouTube. Goated Edits, AI montaze, viralni efekti. 5M+ pregleda, 200+ zadovoljnih klijenata, top-brzina i kvalitet. Poveži se i poruči sledeći viral!";
 
-const text = {
-  en: {
-    headline: "NDZP.VFX — BRUTAL VISUAL FX & VIRAL EDITS",
-    sub: "Elite VFX • AI Video • Goated Edits",
-    desc: "Viral AI edits. Over 5M+ views, 200+ clients. Delivery: 24h. TikTok/YouTube/Instagram/Brand/Influencer edits. Modern workflow, world-class speed & visuals.",
-    services: "Services & Results",
-    details: [
-      "⚡ Viral VFX/AI TikTok, Reels, Shorts edits",
-      "📦 Goated meme & branded edits",
-      "📬 Fast delivery & top communication",
-      "🌐 Worldwide, bilingual (EN/SR)",
-    ],
-    results: "2024: 5M+ views — TikTok, YouTube, Instagram, TV",
-    clients: "Clients: Balkans, EU, USA",
-    avg: "Avg. delivery: 24h, global reach",
-    contact: "Contact me",
-    email: "Email: nikola.djokic10@gmail.com",
-    dm: "DM on Instagram: @nidzp.vfx",
-    srpski: "Српски"
-  },
-  sr: {
-    headline: "NDZP.VFX — BRUTALNI VIZUELNI EFEKTI & VIRALNI EDITOVI",
-    sub: "Elitni VFX • AI Video • Goated Edits",
-    desc: "Viralni AI editovi. 5M+ pregleda, 200+ klijenata. Isporuka: 24h. TikTok/YouTube/Instagram/Brend/Influencer editovanje. Moderan workflow, svetska brzina i vizuali.",
-    services: "Usluge & Rezultati",
-    details: [
-      "⚡ Viralni VFX/AI TikTok, Reels, Shorts editovi",
-      "📦 Goated meme i brendirani editovi",
-      "📬 Brza isporuka & top komunikacija",
-      "🌐 Globalno, EN/SR jezici",
-    ],
-    results: "2024: 5M+ pregleda — TikTok, YouTube, Instagram, TV",
-    clients: "Klijenti: Balkan, EU, SAD",
-    avg: "Prosek isporuke: 24h, globalno",
-    contact: "Kontaktiraj me",
-    email: "Email: nikola.djokic10@gmail.com",
-    dm: "DM na Instagramu: @nidzp.vfx",
-    srpski: "English"
-  }
-};
-
-const links = [
-  { name: "TikTok main profile", url: "https://www.tiktok.com/@nidzp.vfx" },
-  { name: "Goated Edits TikTok", url: "https://www.tiktok.com/@goated.edits" },
->>>>>>> 65334435ac05bf9c2a6ae4d3f33e50d0208d8583
-  { name: "Instagram", url: "https://www.instagram.com/nidzp.vfx/" },
-  { name: "YouTube", url: "https://www.youtube.com/@nidzp" }
+const services = [
+  "⚡ VFX montaže za TikTok / Instagram / YouTube",
+  "🏆 Viralni sportski & AI highlight klipovi",
+  "🎬 Ultra-brzi delivery (24h!)",
+  "🔥 Ekskluzivne animacije, color grading & sound FX",
+  "🤝 Poslovni i influencer editing",
 ];
 
-export default function Home() {
-<<<<<<< HEAD
-  // Lokalno stanje za jezik (en ili sr)
-  const [lang, setLang] = useState<"en" | "sr">("en");
+const socials = [
+  { url: "https://www.tiktok.com/@goatedits_nidzp", name: "TikTok", icon: "🎵" },
+  { url: "https://instagram.com/nidzp.vfx", name: "Instagram", icon: "📸" },
+  { url: "https://www.youtube.com/@goatedits_nidzp", name: "YouTube", icon: "▶️" },
+];
+
+export default function HomePage() {
+  const [lang, setLang] = useState<"sr" | "en">("en");
 
   return (
-    <main className="min-h-screen w-full text-main font-sans flex flex-col">
-      {/* Header navigacija */}
-      <header className="sticky top-0 z-20 w-full bg-bg/90 backdrop-blur border-b border-border flex items-center justify-between px-5 py-4">
-        {/* Logo / ime sajta */}
-        <Link href="/" className="text-3xl md:text-4xl font-extrabold tracking-tighter uppercase select-none">
-          NIDZP.VFX
-        </Link>
-        {/* Meni sa desne strane: linkovi ka stranicama + toggle jezik */}
-        <nav className="flex items-center gap-6">
-          <Link href="/projects" className="text-base font-semibold hover:text-accent">
-            Projects
-          </Link>
-          <Link href="/about" className="text-base font-semibold hover:text-accent">
-            About
-          </Link>
-          <button
-            onClick={() => setLang(lang === "en" ? "sr" : "en")}
-            className="px-4 py-1 border border-accent rounded-lg text-accent font-bold hover:bg-bg2 transition"
-          >
-            {text[lang].toggleLabel}
-          </button>
-        </nav>
-      </header>
-
-      {/* Hero sekcija */}
-      <section className="flex-1 w-full flex flex-col items-center justify-center text-center mt-16 mb-12 px-3">
-        <motion.h1 
-          initial={{ opacity: 0, y: -50 }} 
-          animate={{ opacity: 1, y: 0 }} 
-          transition={{ duration: 0.8 }}
-          className="text-5xl md:text-7xl font-extrabold mb-4 tracking-tight uppercase"
-        >
-          {text[lang].headline}
-        </motion.h1>
-        <motion.div 
-          initial={{ opacity: 0, y: -30 }} 
-          animate={{ opacity: 1, y: 0 }} 
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-2xl md:text-3xl text-accent mb-3 font-bold tracking-wide"
-        >
-          {text[lang].sub}
-        </motion.div>
-        <motion.p 
-          initial={{ opacity: 0, y: -20 }} 
-          animate={{ opacity: 1, y: 0 }} 
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="max-w-xl text-lg md:text-xl text-desc mb-8"
-        >
-          {text[lang].desc}
-        </motion.p>
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }} 
-          animate={{ opacity: 1, y: 0 }} 
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="flex flex-wrap gap-4 justify-center mb-8"
-        >
-=======
-  const [lang, setLang] = useState<"en" | "sr">("en");
-
-  return (
-    <main className="min-h-screen w-full bg-bg text-main font-sans flex flex-col">
-      {/* Header */}
-      <header className="sticky top-0 z-20 w-full bg-bg/90 backdrop-blur border-b border-border flex items-center justify-between px-5 py-4">
-        <span className="text-3xl md:text-4xl font-extrabold tracking-tighter uppercase select-none">
-          NDZP.VFX
-        </span>
+    <main className="flex flex-col items-center justify-center py-10">
+      {/* LANG TOGGLE */}
+      <div className="fixed top-4 left-4 z-50">
         <button
-          className="px-4 py-1 border border-accent rounded-lg text-accent font-bold hover:bg-bg2 transition"
-          onClick={() => setLang(lang === "en" ? "sr" : "en")}
+          onClick={() => setLang(l => (l === "en" ? "sr" : "en"))}
+          className="button-main border border-cyan-400 bg-black/30 px-4 py-2 rounded-full shadow-main hover:bg-cyan-800 transition"
         >
-          {text[lang].srpski}
+          {lang === "en" ? "Srpski" : "English"}
         </button>
-      </header>
+      </div>
 
-      {/* Hero */}
-      <section className="flex-1 w-full flex flex-col items-center justify-center text-center mt-14 mb-8 px-3">
-        <h1 className="text-5xl md:text-7xl font-extrabold mb-3 tracking-tight uppercase">{text[lang].headline}</h1>
-        <div className="text-2xl md:text-3xl text-accent mb-2 font-bold tracking-wide">{text[lang].sub}</div>
-        <p className="max-w-xl text-lg md:text-xl text-desc mb-8">{text[lang].desc}</p>
-        <div className="flex flex-wrap gap-4 justify-center mb-2">
->>>>>>> 65334435ac05bf9c2a6ae4d3f33e50d0208d8583
-          {links.map(link => (
+      {/* HERO */}
+      <section className="w-full flex flex-col items-center mb-12">
+        <motion.h1
+          className="text-4xl md:text-5xl font-bebas font-bold tracking-wider mb-3 text-center drop-shadow-[0_3px_12px_#0ff8] animate-fade-in"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: { opacity: 0, y: 60 },
+            visible: { opacity: 1, y: 0, transition: { duration: 1.3 } }
+          }}
+        >
+          {[...heroText].map((char, i) => (
+            <motion.span
+              key={i}
+              custom={i}
+              variants={textVariants}
+              initial="hidden"
+              animate="visible"
+              className="inline-block animate-letter-pop"
+            >
+              {char === " " ? "\u00A0" : char}
+            </motion.span>
+          ))}
+        </motion.h1>
+        <motion.p
+          className="max-w-2xl mx-auto text-center text-lg md:text-xl mb-5 text-desc font-poppins"
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.2, duration: 0.9 }}
+        >
+          {heroSub}
+        </motion.p>
+
+        <motion.div
+          className="flex gap-4 mt-5"
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.8 }}
+        >
+          {socials.map(s => (
             <a
-              key={link.name}
-              href={link.url}
+              href={s.url}
+              key={s.name}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-5 py-2 rounded-xl border-2 border-accent text-accent font-bold hover:bg-bg2 hover:text-accent2 transition shadow"
+              className="button-main flex items-center gap-2"
             >
-              {link.name}
+              <span>{s.icon}</span> {s.name}
             </a>
           ))}
-<<<<<<< HEAD
         </motion.div>
       </section>
 
-      {/* Usluge/Rezultati sekcija */}
-      <motion.section 
-        className="section"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-      >
-        <h2 className="text-2xl font-bold mb-4">{text[lang].services}</h2>
-        <div className="flex flex-wrap gap-3 mb-4">
-          {text[lang].details.map((item, i) => (
-            <span 
-              key={i} 
-              className="bg-bg2 px-3 py-2 rounded-lg text-base font-semibold text-accent2 shadow"
+      {/* SERVICES */}
+      <section className="section bg-black/50 rounded-2xl p-6 mb-8 shadow-main">
+        <h2 className="text-2xl font-bebas tracking-wider mb-2 text-accent animate-fade-in">Šta nudim?</h2>
+        <ul className="list-inside list-disc space-y-2 text-lg font-poppins text-main">
+          {services.map((srv, idx) => (
+            <motion.li
+              key={idx}
+              className="animate-fade-in"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 2 + idx * 0.15 }}
             >
-              {item}
-            </span>
+              {srv}
+            </motion.li>
           ))}
-        </div>
-        <div className="text-base md:text-lg text-desc mb-1">{text[lang].results}</div>
-        <div className="text-base md:text-lg text-desc mb-1">{text[lang].clients}</div>
-        <div className="text-base md:text-lg text-desc">{text[lang].avg}</div>
-      </motion.section>
+        </ul>
+      </section>
 
-      {/* CTA sekcija - Contact Me dugme */}
-      <section className="text-center mb-10">
-        <a href="mailto:nikola.djokic10@gmail.com" className="button-main inline-block">
-          {text[lang].contact}
+      {/* CTA */}
+      <section className="section flex flex-col md:flex-row items-center justify-center gap-4 mb-14">
+        <a
+          href="mailto:nikola.djokic10@gmail.com"
+          className="button-main bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-lg"
+        >
+          📬 Kontakt: nikola.djokic10@gmail.com
+        </a>
+        <a
+          href="https://instagram.com/nidzp.vfx"
+          target="_blank"
+          className="button-main bg-gradient-to-r from-cyan-600 to-blue-900 hover:from-blue-900 hover:to-cyan-600"
+        >
+          📩 DM @nidzp.vfx
         </a>
       </section>
 
-      {/* Footer (kontakt informacije) */}
-      <footer className="w-full py-6 text-center text-base md:text-lg text-accent2 border-t border-border mt-auto bg-bg/80">
-=======
-        </div>
-      </section>
-
-      {/* Services */}
-      <section className="w-full max-w-3xl mx-auto mb-10 px-3">
-        <h2 className="text-2xl font-bold mb-3">{text[lang].services}</h2>
-        <div className="flex flex-wrap gap-3 mb-3">
-          {text[lang].details.map((d, i) => (
-            <span key={i} className="bg-bg2 px-3 py-2 rounded-lg text-base font-semibold text-accent2 shadow">{d}</span>
-          ))}
-        </div>
-        <div className="text-base md:text-lg text-desc mb-2">{text[lang].results}</div>
-        <div className="text-base md:text-lg text-desc mb-1">{text[lang].clients}</div>
-        <div className="text-base md:text-lg text-desc">{text[lang].avg}</div>
-      </section>
-
-      {/* Contact */}
-      <footer className="w-full py-7 text-center text-lg text-accent2 border-t border-border mt-auto bg-bg/80">
->>>>>>> 65334435ac05bf9c2a6ae4d3f33e50d0208d8583
-        <div className="mb-2 font-bold">{text[lang].contact}</div>
-        <div className="mb-1">{text[lang].email}</div>
-        <div>{text[lang].dm}</div>
+      {/* FOOTER */}
+      <footer className="mt-20 pb-10 text-center text-desc font-poppins text-base opacity-75">
+        &copy; {new Date().getFullYear()} NIDZP.VFX | Portfolio iz budućnosti.
+        <br />
+        TikTok: <a href="https://www.tiktok.com/@goatedits_nidzp" className="text-accent underline">goatedits_nidzp</a>
       </footer>
     </main>
   );

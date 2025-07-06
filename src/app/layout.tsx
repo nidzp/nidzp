@@ -1,58 +1,47 @@
 import "./globals.css";
-<<<<<<< HEAD
 import { Inter } from "next/font/google";
+import { ReactNode } from "react";
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata = {
   title: "NIDZP.VFX | Brutalni VFX, Edit & AI Video Portfolio",
-  description: "Viralni VFX i AI video editing – Goated Edits za TikTok, Instagram, YouTube, brendove i influensere.",
+  description: "Viralni VFX i AI video editing, Goated Edits. TikTok, Instagram, YouTube, brendovi i influenseri.",
   openGraph: {
     title: "NIDZP.VFX | Brutalni VFX Portfolio",
-    description: "Viralni VFX i AI video editing – Goated Edits. TikTok, Instagram, YouTube, brendovi i influenseri.",
-    url: "https://nidzp-vfx-portfolio.vercel.app",
+    description: "Viralni VFX i AI video editing, Goated Edits. TikTok, Instagram, YouTube, brendovi i influenseri.",
+    url: "https://nidzp-aegs.vercel.app",
     siteName: "NIDZP.VFX Portfolio",
     images: [
       {
         url: "/pozadina.png",
         width: 1200,
         height: 630,
-        alt: "NIDZP.VFX Portfolio Background"
-      }
+        alt: "NIDZP.VFX Portfolio",
+      },
     ],
     locale: "en_US",
-    type: "website"
-  }
-};
-
-const inter = Inter({ subsets: ["latin"] });
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en" className={inter.className}>
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </head>
-      <body>{children}</body>
-=======
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "NDZP.VFX | Elite Video Editor & Creative Studio",
-  description: "World-class VFX, editing & AI content. TikTok, Instagram, YouTube, commercials. Fast delivery. Brutal results.",
-  icons: {
-    icon: "/favicon.ico",
+    type: "website",
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
-      <body className="bg-bg text-main font-sans antialiased">{children}</body>
->>>>>>> 65334435ac05bf9c2a6ae4d3f33e50d0208d8583
+    <html lang="en" className={inter.variable}>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta property="og:title" content={metadata.title} />
+        <meta property="og:description" content={metadata.description} />
+        <meta property="og:image" content="/pozadina.png" />
+        <meta property="og:url" content="https://nidzp-aegs.vercel.app" />
+      </head>
+      <body className="bg-hero-gradient min-h-screen font-inter text-white antialiased">
+        <div className="w-full min-h-screen bg-custom-dark bg-cover bg-no-repeat bg-fixed">
+          {/* NAVIGATION could go here */}
+          {children}
+        </div>
+      </body>
     </html>
   );
 }
