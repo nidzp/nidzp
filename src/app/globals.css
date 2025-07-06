@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @tailwind utilities;
 
 /* Globalni stil za body - tamna pozadina sa gradientom i slikom */
@@ -45,4 +46,38 @@ a {
   .section {
     @apply px-2;
   }
+=======
+:root {
+  --color-bg: #131829;
+  --color-bg2: #181f36;
+  --color-main: #f6faff;
+  --color-desc: #c9d5ec;
+  --color-accent: #3bd3fe;
+  --color-accent2: #92ebff;
+  --color-border: #32405a;
+}
+html,
+body {
+  min-height: 100%;
+  width: 100%;
+  background: var(--color-bg);
+  color: var(--color-main);
+  font-family: 'Inter', Arial, sans-serif;
+}
+.bg-bg   { background-color: var(--color-bg);}
+.bg-bg2  { background-color: var(--color-bg2);}
+.text-main { color: var(--color-main);}
+.text-desc { color: var(--color-desc);}
+.text-accent { color: var(--color-accent);}
+.text-accent2 { color: var(--color-accent2);}
+.border-border { border-color: var(--color-border);}
+a { color: var(--color-accent); text-decoration: none;}
+a:hover { color: var(--color-accent2);}
+::-webkit-scrollbar { width: 8px; background: #191f2a;}
+::-webkit-scrollbar-thumb { background: #32405a; border-radius: 4px;}
+@media (max-width: 600px) {
+  h1 { font-size: 2rem !important;}
+  .text-xl { font-size: 1.1rem !important;}
+  .text-2xl { font-size: 1.3rem !important;}
+>>>>>>> 65334435ac05bf9c2a6ae4d3f33e50d0208d8583
 }

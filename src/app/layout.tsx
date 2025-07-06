@@ -1,4 +1,5 @@
 import "./globals.css";
+<<<<<<< HEAD
 import { Inter } from "next/font/google";
 
 export const metadata = {
@@ -32,6 +33,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body>{children}</body>
+=======
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "NDZP.VFX | Elite Video Editor & Creative Studio",
+  description: "World-class VFX, editing & AI content. TikTok, Instagram, YouTube, commercials. Fast delivery. Brutal results.",
+  icons: {
+    icon: "/favicon.ico",
+  },
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body className="bg-bg text-main font-sans antialiased">{children}</body>
+>>>>>>> 65334435ac05bf9c2a6ae4d3f33e50d0208d8583
     </html>
   );
 }

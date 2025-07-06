@@ -2,6 +2,7 @@
 module.exports = {
   content: [
     "./src/app/**/*.{js,ts,jsx,tsx}",
+<<<<<<< HEAD
     "./src/components/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
@@ -19,4 +20,12 @@ module.exports = {
     }
   },
   plugins: []
+=======
+    "./src/components/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+>>>>>>> 65334435ac05bf9c2a6ae4d3f33e50d0208d8583
 }
