@@ -1,62 +1,33 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 :root {
-  --color-bg: #0b1220;
-  --color-bg2: #171f2c;
-  --color-main: #e5f6ff;
-  --color-border: #222b3a;
-  --color-accent: #35d0fc;
-  --color-accent2: #7ddff9;
-  --color-desc: #b0c8e2;
+  --color-bg: #131829;
+  --color-bg2: #181f36;
+  --color-main: #f6faff;
+  --color-desc: #c9d5ec;
+  --color-accent: #3bd3fe;
+  --color-accent2: #92ebff;
+  --color-border: #32405a;
 }
-
+html,
 body {
-  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  min-height: 100%;
+  width: 100%;
   background: var(--color-bg);
   color: var(--color-main);
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-  letter-spacing: 0.01em;
+  font-family: 'Inter', Arial, sans-serif;
 }
-
-/* Tailwind classes for easy use */
-.bg-bg { background: var(--color-bg) !important; }
-.bg-bg2 { background: var(--color-bg2) !important; }
-.text-main { color: var(--color-main) !important; }
-.text-accent { color: var(--color-accent) !important; }
-.text-accent2 { color: var(--color-accent2) !important; }
-.text-desc { color: var(--color-desc) !important; }
-.border-border { border-color: var(--color-border) !important; }
-
-/* Button style */
-.btn {
-  @apply inline-block px-5 py-2 rounded-xl border-2 border-[#35d0fc] text-[#35d0fc] font-bold shadow-md hover:bg-[#172136] hover:text-[#83e5fc] transition;
-  font-size: 1rem;
-  text-decoration: none;
+.bg-bg   { background-color: var(--color-bg);}
+.bg-bg2  { background-color: var(--color-bg2);}
+.text-main { color: var(--color-main);}
+.text-desc { color: var(--color-desc);}
+.text-accent { color: var(--color-accent);}
+.text-accent2 { color: var(--color-accent2);}
+.border-border { border-color: var(--color-border);}
+a { color: var(--color-accent); text-decoration: none;}
+a:hover { color: var(--color-accent2);}
+::-webkit-scrollbar { width: 8px; background: #191f2a;}
+::-webkit-scrollbar-thumb { background: #32405a; border-radius: 4px;}
+@media (max-width: 600px) {
+  h1 { font-size: 2rem !important;}
+  .text-xl { font-size: 1.1rem !important;}
+  .text-2xl { font-size: 1.3rem !important;}
 }
-
-/* Footer */
-.footer {
-  color: var(--color-accent2);
-  font-size: 1rem;
-  opacity: 0.7;
-  margin-top: 24px;
-  margin-bottom: 8px;
-}
-
-/* Card shadow and corners */
-.rounded-2xl { border-radius: 1rem !important; }
-.rounded-xl { border-radius: 0.75rem !important; }
-.shadow-2xl {
-  box-shadow: 0 6px 64px #35d0fc44, 0 1.5px 9px #000a !important;
-}
-
-/* Remove tap highlight on mobile */
-* { -webkit-tap-highlight-color: transparent; }
-
-/* Custom scrollbar */
-::-webkit-scrollbar { width: 8px; background: #101828;}
-::-webkit-scrollbar-thumb { background: #35d0fcbb; border-radius: 8px;}

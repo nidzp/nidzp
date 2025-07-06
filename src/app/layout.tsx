@@ -1,27 +1,22 @@
-// app/layout.tsx
-import './globals.css'
-import { ReactNode } from 'react'
+import "./globals.css";
+import type { Metadata } from "next";
 
-export const metadata = {
-  title: 'NDZP.VFX Portfolio',
-  description: 'Elite VFX & Video Editing by nidzp.vfx',
-}
+export const metadata: Metadata = {
+  title: "NDZP.VFX | Elite Video Editor & Creative Studio",
+  description: "World-class VFX, editing & AI content. TikTok, Instagram, YouTube, commercials. Fast delivery. Brutal results.",
+  icons: {
+    icon: "/favicon.ico",
+  },
+};
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="theme-color" content="#0b1220" />
-        <link rel="preconnect" href="https://fonts.googleapis.com"/>
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous"/>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body>{children}</body>
+      <body className="bg-bg text-main font-sans antialiased">{children}</body>
     </html>
-  )
+  );
 }
